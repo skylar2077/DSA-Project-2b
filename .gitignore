@@ -1,4 +1,3 @@
 venv/
-data/embeddings.npy
 data/GoodReads_100k_books.csv
 __pycache__/
