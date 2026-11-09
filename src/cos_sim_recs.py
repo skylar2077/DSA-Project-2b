@@ -111,7 +111,7 @@ def recommend(
     top = np.argsort(sims)[::-1][:n]
     top = [i for i in top if sims[i] > -1.0]  # drop slots left empty by filters
     # relevant data is sliced from top book entries
-    out = df.loc[top, ["title", "desc", "genre", "img", "isbn", "link", "pages", "rating", "reviews", "title", "totalratings"]].copy()
+    out = df.loc[top, ["author", "desc", "genre", "img", "isbn", "link", "pages", "rating", "reviews", "title", "totalratings"]].copy()
     out["similarity"] = sims[top].round(3) # similarity score column is added to final output
     return out.reset_index(drop=True)
 
