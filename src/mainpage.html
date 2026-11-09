@@ -10,13 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-    <!-- fleur de leah -->
     <link href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- webpage icon -->
+    <!-- Webpage Icon -->
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/5322/5322639.png">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -82,7 +82,7 @@
     <!-- Settings Overlay Backdrop -->
     <div id="settings-backdrop" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
 
-    <!-- Settings Sidebar Drawer (Left Panel) -->
+    <!-- Settings Sidebar Drawer -->
     <aside id="settings-drawer" class="fixed top-0 left-0 h-full w-80 md:w-96 bg-[#e6e2dd] shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col p-6 overflow-y-auto">
         <!-- Drawer Header -->
         <div class="flex justify-between items-center mb-6 pt-2">
@@ -107,7 +107,7 @@
                 </select>
             </div>
 
-            <!-- Block 2: Hard Filters (Min Rating & Rating Count) -->
+            <!-- Block 2: Hard Filters -->
             <div class="bg-rust-700 text-white rounded-xl p-4 shadow-md hover:bg-rust-800 transition space-y-3">
                 <div class="flex items-center gap-2 font-medium">
                     <i class="fa-solid fa-filter text-xs opacity-80"></i>
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <!-- Block 3: Top N Limit (how_many_entries) -->
+            <!-- Block 3: Top N Limit -->
             <div class="bg-rust-700 text-white rounded-xl p-4 shadow-md hover:bg-rust-800 transition">
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-2 font-medium">
@@ -140,10 +140,10 @@
                     </div>
                     <span id="results-count-display" class="bg-rust-800 px-2.5 py-0.5 rounded text-xs font-mono font-bold">5 items</span>
                 </div>
-                <input type="range" id="results-count-slider" min="5" max="50" value="4" step="5" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer">
+                <input type="range" id="results-count-slider" min="5" max="50" value="5" step="5" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer">
             </div>
 
-            <!-- Block 4: 5-Feature Weight Balance Control -->
+            <!-- Block 4: 4-Feature Weight Balance Control -->
             <div id="weights-container" class="bg-rust-700 text-white rounded-xl p-4 shadow-md hover:bg-rust-800 transition space-y-3">
                 <div class="flex items-center gap-2 font-medium">
                     <i class="fa-solid fa-sliders text-xs opacity-80"></i>
@@ -153,33 +153,33 @@
                 <div>
                     <div class="flex justify-between text-xs mb-1">
                         <span>1. Title</span>
-                        <span id="weight-title-val" class="font-mono">20%</span>
+                        <span id="weight-title-val" class="font-mono">25%</span>
                     </div>
-                    <input type="range" id="weight-title" min="0" max="100" value="20" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer weight-slider">
+                    <input type="range" id="weight-title" min="0" max="100" value="25" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer weight-slider">
                 </div>
 
                 <div>
                     <div class="flex justify-between text-xs mb-1">
                         <span>2. Author</span>
-                        <span id="weight-author-val" class="font-mono">20%</span>
+                        <span id="weight-author-val" class="font-mono">25%</span>
                     </div>
-                    <input type="range" id="weight-author" min="0" max="100" value="20" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer weight-slider">
+                    <input type="range" id="weight-author" min="0" max="100" value="25" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer weight-slider">
                 </div>
 
                 <div>
                     <div class="flex justify-between text-xs mb-1">
                         <span>3. Description</span>
-                        <span id="weight-desc-val" class="font-mono">20%</span>
+                        <span id="weight-desc-val" class="font-mono">25%</span>
                     </div>
-                    <input type="range" id="weight-desc" min="0" max="100" value="20" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer weight-slider">
+                    <input type="range" id="weight-desc" min="0" max="100" value="25" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer weight-slider">
                 </div>
 
                 <div>
                     <div class="flex justify-between text-xs mb-1">
                         <span>4. Genre</span>
-                        <span id="weight-genre-val" class="font-mono">20%</span>
+                        <span id="weight-genre-val" class="font-mono">25%</span>
                     </div>
-                    <input type="range" id="weight-genre" min="0" max="100" value="20" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer weight-slider">
+                    <input type="range" id="weight-genre" min="0" max="100" value="25" class="w-full h-1.5 bg-rust-800 rounded-lg appearance-none cursor-pointer weight-slider">
                 </div>
             </div>
 
@@ -189,7 +189,7 @@
     <!-- Main View Area -->
     <main class="flex-1 flex flex-col items-center justify-start p-4 md:p-8 max-w-4xl mx-auto w-full">
         
-        <!-- Ornate Calligraphic Header ("Book Club") -->
+        <!-- Header ("Book Club") -->
         <header class="text-center mt-4 mb-8 md:mt-10 md:mb-10">
             <h1 class="font-script-flourish text-7xl md:text-8xl text-gray-900 tracking-wide select-none drop-shadow-xs">
                 Book Club
@@ -215,25 +215,23 @@
                 >
 
                 <!-- Right Search Action Button -->
-                <button type="submit" aria-label="Search" class="pr-5 pl-2 text-gray-500 hover:text-rust-700 transition-colors focus:outline-none">
+                <button type="submit" id="search-btn" aria-label="Search" class="pr-5 pl-2 text-gray-500 hover:text-rust-700 transition-colors focus:outline-none">
                     <i class="fa-solid fa-magnifying-glass text-lg"></i>
                 </button>
             </form>
-
         </section>
 
         <!-- Recommendations View Container -->
         <section id="results-wrapper" class="w-full max-w-2xl hidden space-y-4">
-            
             <!-- Section Header & Result Count -->
             <div class="flex justify-between items-center border-b border-gray-300/70 pb-3 mb-2">
                 <h2 class="text-xl font-bold text-gray-900 tracking-tight">Book Recommendations</h2>
-                <span id="results-count-tag" class="text-xs text-gray-500 font-semibold font-mono">4 items</span>
+                <span id="results-count-tag" class="text-xs text-gray-500 font-semibold font-mono">0 items</span>
             </div>
 
             <!-- Cards Container -->
             <div id="results-list" class="space-y-4">
-                <!-- Dynamic cards rendered here from book vector -->
+                <!-- Dynamic cards rendered here -->
             </div>
         </section>
 
@@ -256,6 +254,7 @@
 
         const searchForm = document.getElementById('search-form');
         const searchInput = document.getElementById('search-input');
+        const searchBtn = document.getElementById('search-btn');
         const algoSelect = document.getElementById('algo-select');
         const minRatingSlider = document.getElementById('min-rating-slider');
         const minRatingVal = document.getElementById('min-rating-val');
@@ -278,7 +277,7 @@
                 bookformat: "Paperback",
                 desc: "The story of the mysteriously wealthy Jay Gatsby and his love for Daisy Buchanan in the Jazz Age.",
                 genre: "Classic, Fiction, Historical",
-                img: "data:image/jpeg;base64,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",
+                img: "https://placehold.co/120x180/8b261b/white?text=Gatsby",
                 isbn: "0743273567",
                 isbn13: "9780743273565",
                 link: "https://www.goodreads.com/book/show/4671",
@@ -294,7 +293,7 @@
                 bookformat: "Hardcover",
                 desc: "Set on the desert planet Arrakis, Dune is the story of Paul Atreides and the spice melange.",
                 genre: "Science Fiction, Epic, Fantasy",
-                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1I013_oF6OmQZgxq-p8Md6UU5smdvhepSd4yBZFWmGaJstXK2Paek5sgi&s=10",
+                img: "https://placehold.co/120x180/8b261b/white?text=Dune",
                 isbn: "0441172717",
                 isbn13: "9780441172719",
                 link: "https://www.goodreads.com/book/show/234225",
@@ -302,42 +301,10 @@
                 rating: 4.25,
                 rating_count: 1200000,
                 similarity_score: 0.88
-            },
-            {
-                id: "3",
-                title: "1984",
-                author: "George Orwell",
-                bookformat: "Paperback",
-                desc: "Winston Smith rewrites history for the Ministry of Truth in a terrifying dystopian police state.",
-                genre: "Dystopian, Sci-Fi, Classics",
-                img: "https://images.booksense.com/images/333/869/9781328869333.jpg",
-                isbn: "0451524934",
-                isbn13: "9780451524935",
-                link: "https://www.goodreads.com/book/show/5470",
-                pages: 328,
-                rating: 4.19,
-                rating_count: 4100000,
-                similarity_score: 0.82
-            },
-            {
-                id: "4",
-                title: "Brave New World",
-                author: "Aldous Huxley",
-                bookformat: "Paperback",
-                desc: "A futuristic world where citizens are genetically engineered and socially conditioned in a high-tech dystopia.",
-                genre: "Dystopian, Sci-Fi, Classics",
-                img: "https://images.booksense.com/images/524/850/9780060850524.jpg",
-                isbn: "0060850524",
-                isbn13: "9780060850524",
-                link: "https://www.goodreads.com/book/show/5129",
-                pages: 288,
-                rating: 3.99,
-                rating_count: 1600000,
-                similarity_score: 0.76
             }
         ];
 
-        // UI Handles for 5 Category Sliders: Title, Author, Description, Genre, Rating
+        // UI Handles for 4 Category Sliders: Title, Author, Description, Genre
         const weightTitle = document.getElementById('weight-title');
         const weightAuthor = document.getElementById('weight-author');
         const weightDesc = document.getElementById('weight-desc');
@@ -373,13 +340,12 @@
             { el: weightAuthor, valEl: weightAuthorVal },
             { el: weightDesc, valEl: weightDescVal },
             { el: weightGenre, valEl: weightGenreVal }
-
         ];
 
-        // Normalizes the 5 sliders so their percentages always sum to 100% total
+        // Normalizes the 4 sliders so their percentages always sum to 100% total
         function updateSliderPercentages() {
             const rawValues = sliders.map(s => {
-                const val = parseInt(s.el ? s.el.value : 20, 10);
+                const val = parseInt(s.el ? s.el.value : 25, 10);
                 return isNaN(val) ? 0 : val;
             });
             const total = rawValues.reduce((sum, v) => sum + v, 0) || 1;
@@ -396,7 +362,6 @@
             if (s.el) {
                 s.el.addEventListener('input', () => {
                     updateSliderPercentages();
-                    if (lastQuery) executeRecommendation(lastQuery);
                 });
             }
         });
@@ -405,11 +370,11 @@
         updateSliderPercentages();
 
         minRatingSlider.addEventListener('input', (e) => {
-            minRatingVal.textContent = `${e.target.value}★`;
+            minRatingVal.textContent = `${parseFloat(e.target.value).toFixed(1)}★`;
         });
 
         minCountSlider.addEventListener('input', (e) => {
-            minCountVal.textContent = parseInt(e.target.value).toLocaleString();
+            minCountVal.textContent = parseInt(e.target.value, 10).toLocaleString();
         });
 
         resultsCountSlider.addEventListener('input', (e) => {
@@ -419,10 +384,9 @@
         algoSelect.addEventListener('change', () => {
             const isCosine = algoSelect.value === 'cosine';
             document.getElementById('weights-container').style.opacity = isCosine ? '0.5' : '1.0';
-            if (lastQuery) executeRecommendation(lastQuery);
         });
 
-        // Search Form Handlers
+        // Search Form Submit Listener (handles Enter key and search button click)
         searchForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const query = searchInput.value.trim();
@@ -439,8 +403,6 @@
             const rawGenre = parseInt(weightGenre.value || 0, 10);
             const sumWeights = rawTitle + rawAuthor + rawDesc + rawGenre || 1;
 
-            // 1. INPUT PAYLOAD PREPARED FOR PYTHON BACKEND
-            // Exactly matching the 5 requested categories: title, author, desc, genre, rating
             const payloadGivenToBackend = {
                 query: query,
                 algorithm: algoSelect.value,
@@ -459,33 +421,25 @@
             resultsWrapper.classList.remove('hidden');
 
             try {
-    // 1. Send inputs to backend
-    const res = await fetch('/api/recommend', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payloadGivenToBackend)
-    });
-    
-    if (!res.ok) throw new Error('Backend server offline');
-    
-    // 2. Python returns the vector array directly: [ {book1}, {book2}, {book3} ]
-    const bookVector = await res.json();
-    
-    // 3. Render the vector directly!
-    renderCards(bookVector);
+                const res = await fetch('/api/recommend', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payloadGivenToBackend)
+                });
+                
+                if (!res.ok) throw new Error('Backend server offline');
+                
+                const bookVector = await res.json();
+                renderCards(bookVector);
 
-} catch (err) {
-    // Offline fallback: slice local sample array
-    const sliced = fallbackBookDataset.slice(0, payloadGivenToBackend.top_n);
-    renderCards(sliced);
-}
+            } catch (err) {
+                console.warn("Using offline fallback data:", err);
+                const sliced = fallbackBookDataset.slice(0, payloadGivenToBackend.top_n);
+                renderCards(sliced);
+            }
         }
 
-        function roundTwo(num) {
-            return Math.round(num * 100) / 100;
-        }
-
-        // 2. OUTPUT RENDERER: Renders vector of book objects received from backend
+        // Output Renderer: Renders vector array of book objects
         function renderCards(books) {
             resultsCountTag.textContent = `${books.length} items`;
 
@@ -500,13 +454,21 @@
                 return;
             }
 
-            resultsList.innerHTML = books.map((book, idx) => {
-                const matchPct = Math.round((book.similarity_score || 0) * 100);
+            const isCosine = algoSelect.value === 'cosine';
+
+            resultsList.innerHTML = books.map((book) => {
                 const genres = (book.genre || 'General').split(',').map(g => `<span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-0.5 rounded-md font-medium">${g.trim()}</span>`).join(' ');
+
+                // Conditionally render percentage match badge ONLY for Cosine algorithm with valid scores
+                const matchBadgeHtml = (isCosine && book.similarity_score !== null && book.similarity_score !== undefined) ? `
+                    <span class="shrink-0 bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full border border-emerald-200/80">
+                        ${Math.round(book.similarity_score * 100)}% match
+                    </span>
+                ` : '';
 
                 return `
                 <div class="py-4 border-b border-gray-300/80 last:border-b-0 transition-colors">
-            <div class="flex items-start gap-4">
+                    <div class="flex items-start gap-4">
                         
                         <!-- Book Cover Image -->
                         <div class="w-16 h-24 rounded-md overflow-hidden bg-gray-100 shrink-0 border border-gray-200 relative group">
@@ -524,12 +486,10 @@
                                         by ${book.author}
                                     </p>
                                 </div>
-                                <span class="shrink-0 bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full border border-emerald-200/80">
-                                    ${matchPct}% match
-                                </span>
+                                ${matchBadgeHtml}
                             </div>
 
-                            <!-- Rating, Format, Pages Metadata -->
+                            <!-- Metadata -->
                             <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2 text-xs text-gray-500">
                                 <span class="flex items-center text-amber-600 font-semibold">
                                     <i class="fa-solid fa-star text-[11px] mr-1"></i>${book.rating}
@@ -537,41 +497,30 @@
                                 <span>•</span>
                                 <span>${book.pages} pages</span>
                                 <span>•</span>
-                                <span class="font-mono text-[10px] text-gray-400">ISBN: ${book.isbn}</span>
+                                <span class="font-mono text-[10px] text-gray-400">ISBN: ${book.isbn || 'N/A'}</span>
                             </div>
 
-                            <!-- Genres Tags -->
+                            <!-- Genre Tags -->
                             <div class="flex flex-wrap gap-1.5 mt-2.5">
                                 ${genres}
                             </div>
 
                             <!-- Description -->
-                            <p  class="text-xs text-gray-600 mt-2.5 line-clamp-2 leading-relaxed">
-                                ${book.desc}
+                            <p class="text-xs text-gray-600 mt-2.5 line-clamp-2 leading-relaxed">
+                                ${book.desc || 'No description available.'}
                             </p>
                             <br>
-                            <!-- view on Goodreads -->
-                            <a href="${book.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-rust-700 hover:text-rust-800 font-semibold hover:underline">
-                            <span>View on Goodreads</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                        </a>
+                            <!-- Goodreads Link -->
+                            <a href="${book.link || '#'}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-rust-700 hover:text-rust-800 font-semibold hover:underline">
+                                <span>View on Goodreads</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
                         </div>
                     </div>
-
                 </div>
                 `;
             }).join('');
         }
-
-        // Toggle Book Description snippet
-        window.toggleDesc = function(idx) {
-            const descEl = document.getElementById(`desc-${idx}`);
-            if (descEl.classList.contains('line-clamp-2')) {
-                descEl.classList.remove('line-clamp-2');
-            } else {
-                descEl.classList.add('line-clamp-2');
-            }
-        };
     </script>
 </body>
 </html>

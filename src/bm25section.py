@@ -80,16 +80,14 @@ class bm25O :
         scores = np.zeros(self.databaseSize) # creates a numpy array of all zeros, one for each item in the database
         tempdl = np.array(self.dl) # makes a numpy array based on the dl. This is because I don't know how lists plus
         # numpy arrays work when interacting with eachother
+      
 
-        simplequery = query.lower()
-        tokenizedQuery = simplequery.split(" ")
-
-        for term in tokenizedQuery:
+        for term in query:
             # here the (dic.get(term) or 0) is used to ensure that an integer is used in the function
             tf = np.array([(item.get(term) or 0) for item in self.frequencies])
             scores += ((self.IDF.get(term) or 0) *
-                       (tf * (self.k1 + 1)) /
-                       (tf + self.k1 * (1 - self.b + self.b * tempdl / self.avgdl)))
+                    (tf * (self.k1 + 1)) /
+                    (tf + self.k1 * (1 - self.b + self.b * tempdl / self.avgdl)))
 
         return scores.tolist()
 
