@@ -8,6 +8,9 @@ from bm25section import bm25O
 #     return instring.translate(str.maketrans('', '', string.punctuation)).lower()
 
 
+'''
+    This block of commented out code has to do with the way I created the pickle file and BM25 objects. It has no purpose anymore.
+'''
 # df = pd.read_csv("GoodReads_100k_books.csv", usecols=["author", "desc", "genre", "img", "isbn", "link", "pages", "rating", "reviews", "title", "totalratings"])
 
 # nthrow = df.iloc[30]
