@@ -81,7 +81,10 @@ class bm25O :
         tempdl = np.array(self.dl) # makes a numpy array based on the dl. This is because I don't know how lists plus
         # numpy arrays work when interacting with eachother
 
-        for term in query:
+        simplequery = query.instring.translate(str.maketrans('', '', string.punctuation)).lower()
+        tokenizedQuery = simplequery.split(" ")
+
+        for term in tokenizedQuery:
             # here the (dic.get(term) or 0) is used to ensure that an integer is used in the function
             tf = np.array([(item.get(term) or 0) for item in self.frequencies])
             scores += ((self.IDF.get(term) or 0) *
