@@ -81,7 +81,7 @@ class bm25O :
         tempdl = np.array(self.dl) # makes a numpy array based on the dl. This is because I don't know how lists plus
         # numpy arrays work when interacting with eachother
 
-        simplequery = query.instring.translate(str.maketrans('', '', string.punctuation)).lower()
+        simplequery = query.translate(str.maketrans('', '', string.punctuation)).lower()
         tokenizedQuery = simplequery.split(" ")
 
         for term in tokenizedQuery:
