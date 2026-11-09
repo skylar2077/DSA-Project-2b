@@ -113,10 +113,7 @@ def recommend(
     # relevant data is sliced from top book entries
     out = df.loc[top, ["author", "desc", "genre", "img", "isbn", "link", "pages", "rating", "reviews", "title", "totalratings"]].copy()
     out["similarity"] = sims[top].round(3) # similarity score column is added to final output
-    return out.reset_index(drop=True)
-
-def convert_matrix(df: pd.DataFrame) -> list[list[string]]:
-    return df.to_numpy()
+    return out.reset_index(drop=True)   
 
 # Command line interface for testing
 if __name__ == "__main__":
