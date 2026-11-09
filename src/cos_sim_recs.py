@@ -115,8 +115,6 @@ def recommend(
     out["similarity"] = sims[top].round(3) # similarity score column is added to final output
     return out.reset_index(drop=True)
 
-def convert_matrix(df: pd.DataFrame) -> list[list[string]]:
-    return df.to_numpy()
 
 # Command line interface for testing
 if __name__ == "__main__":
