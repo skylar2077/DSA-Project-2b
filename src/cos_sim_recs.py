@@ -2,7 +2,7 @@
 # books by cosine similarity.
 
 # Usage:
-#     python book_recommender.py "The Hunger Games" -n 5
+#     python cos_sim_recs.py "The Fault in Our Stars" -n 5
 
 import argparse
 import difflib
@@ -33,6 +33,7 @@ def load_books(csv_path: str = CSV_PATH) -> pd.DataFrame:
     return df.reset_index(drop=True)
 
 # Uses SentenceTransformer to build comparable vector embeddings for each book's description
+# 30-40 minute run time on CPU to create vector embeddings of current dataset
 def build_embeddings(df: pd.DataFrame, cache_path: str = EMB_PATH) -> np.ndarray:
     # Embed every description once, then cache
     if os.path.exists(cache_path):
@@ -40,7 +41,7 @@ def build_embeddings(df: pd.DataFrame, cache_path: str = EMB_PATH) -> np.ndarray
         if len(emb) == len(df):
             return emb
         print("Cached embeddings don't match the data; rebuilding...")
-
+    # SentenceTransformer uses a trained language model to assign weights to each token
     model = SentenceTransformer(MODEL_NAME)
     emb = model.encode(
         df["desc"].tolist(),
@@ -51,7 +52,7 @@ def build_embeddings(df: pd.DataFrame, cache_path: str = EMB_PATH) -> np.ndarray
     np.save(cache_path, emb)
     return emb
 
-
+# searches for a matching title within the DataFrame
 def find_book_index(df: pd.DataFrame, query: str) -> int:
     #Exact (case-insensitive) match
     titles = df["title"].str.lower()
@@ -61,32 +62,32 @@ def find_book_index(df: pd.DataFrame, query: str) -> int:
     if len(exact):
         return int(exact[0])
 
-    #Fuzzy match in case exact match not found
-    close = difflib.get_close_matches(q, titles.tolist(), n=1, cutoff=0.6)
-    if close:
-        return int(np.where(titles == close[0])[0][0])
-
     raise ValueError(f"No book found matching '{query}'")
 
+# Calculates the dot product of two 384 size vectors
 def dot(a, b) -> float:
     total = 0.0
     for x, y in zip(a, b):
         total += x * y
     return total
 
+# Calculates the normal value of a vector
 def norm(a) -> float:
     return math.sqrt(dot(a, a))
 
+# Calculates cosine similarity by dividing the dot product of vectors A and B by |A|*|B|
 def cosine_similarity(a, b) -> float:
     denom = norm(a) * norm(b)
     if denom == 0: # avoid dividing by zero for an all-zero vector
         return 0.0
     return dot(a, b) / denom
 
+# Calculates cosine similarity comparing the target book with the dataset, returning a list of scores
 def similarities(emb, idx) -> list[float]:
     query = emb[idx]
     return [cosine_similarity(query, row) for row in emb]
 
+# Finds similar books to target book using cosine similarity, with filtering functionality
 def recommend(
     df: pd.DataFrame,
     emb: np.ndarray,
@@ -102,19 +103,22 @@ def recommend(
  
     # Rating filter
     passes = (df["rating"] >= min_rating) & (df["totalratings"] >= min_votes)
+    # books that don't pass filter set similiarity score to -1
     sims = np.where(passes.to_numpy(), sims, -1.0)
     sims[idx] = -1.0  # never recommend the given query book
- 
+
+    # Table is sorted descending from similiarity score
     top = np.argsort(sims)[::-1][:n]
     top = [i for i in top if sims[i] > -1.0]  # drop slots left empty by filters
- 
-    out = df.loc[top, ["title", "bookformat", "desc", "genre", "img", "isbn", "isbn13", "link", "pages", "rating", "reviews", "title", "totalratings"]].copy()
-    out["similarity"] = sims[top].round(3)
+    # relevant data is sliced from top book entries
+    out = df.loc[top, ["title", "desc", "genre", "img", "isbn", "link", "pages", "rating", "reviews", "title", "totalratings"]].copy()
+    out["similarity"] = sims[top].round(3) # similarity score column is added to final output
     return out.reset_index(drop=True)
 
 def convert_matrix(df: pd.DataFrame) -> list[list[float]]:
     return df.to_numpy()
 
+# Command line interface
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Recommend similar books.")
     parser.add_argument("title", help="Title of a book you like")
