@@ -111,14 +111,14 @@ def recommend(
     top = np.argsort(sims)[::-1][:n]
     top = [i for i in top if sims[i] > -1.0]  # drop slots left empty by filters
     # relevant data is sliced from top book entries
-    out = df.loc[top, ["title", "desc", "genre", "img", "isbn", "link", "pages", "rating", "reviews", "title", "totalratings"]].copy()
+    out = df.loc[top, ["author", "desc", "genre", "img", "isbn", "link", "pages", "rating", "reviews", "title", "totalratings"]].copy()
     out["similarity"] = sims[top].round(3) # similarity score column is added to final output
     return out.reset_index(drop=True)
 
-def convert_matrix(df: pd.DataFrame) -> list[list[float]]:
+def convert_matrix(df: pd.DataFrame) -> list[list[string]]:
     return df.to_numpy()
 
-# Command line interface
+# Command line interface for testing
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Recommend similar books.")
     parser.add_argument("title", help="Title of a book you like")
